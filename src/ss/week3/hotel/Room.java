@@ -10,7 +10,7 @@ public class Room {
  
     private int number;
     private Guest guest;
-    private Safe safe;
+    protected Safe safe;
  
     // ------------------ Constructor ------------------------
  
@@ -18,9 +18,9 @@ public class Room {
      * Creates a <code>Room</code> with the given number, without a guest.
      * @param no number of the new <code>Room</code>
      */
-    public Room(int no) {
+    public Room(int no, Safe safe) {
         number = no;
-        safe = new Safe();
+        this.safe = safe;
     }
  
     // ------------------ Queries --------------------------

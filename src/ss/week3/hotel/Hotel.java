@@ -23,8 +23,8 @@ public class Hotel {
 	*/
 	public Hotel(String naam) {
 		this.naam = naam;
-		k101 = new Room(101);
-		k102 = new Room(102);
+		k101 = new Room(101, new Safe());
+		k102 = new Room(102, new Safe());
 		hotelpass = new Password();
 	}
 	
