@@ -1,7 +1,7 @@
 package ss.week4;
 
 public class IntSet{
-	private static final int NUM_ELEMENTS = 1000;
+	private static final int NUM_ELEMENTS = 10;
 	
 	private boolean[] isIn;
 	
@@ -20,21 +20,34 @@ public class IntSet{
 	}
 	
 	public void addInt(int value){
-		if(value < 0 || value >= NUM_ELEMENTS) throw new IllegalArgumentException("out of bounds");
-		if(!isIn[value]) throw new IllegalArgumentException("already in set");
+		if(value < 0) throw new IllegalArgumentException("out of bounds");
+		if(value >= isIn.length) resize(value + 1);
 		
 		isIn[value] = true;
 	}
 	
 	public void removeInt(int value){
-		if(value < 0 || value >= NUM_ELEMENTS) throw new IllegalArgumentException("out of bounds");
+		if(value < 0 || value >= isIn.length) throw new IllegalArgumentException("out of bounds");
 		
 		isIn[value] = false;
 	}
 	
 	public boolean hasInt(int value){
-		if(value < 0 || value >= NUM_ELEMENTS) throw new IllegalArgumentException("out of bounds");
+		if(value < 0 || value >= isIn.length) throw new IllegalArgumentException("out of bounds");
 		
 		return isIn[value];
+	}
+	
+	private void resize(int newSize){
+		System.arraycopy(new boolean[newSize], 0, isIn, 0, isIn.length);
+		
+		isIn = new boolean[newSize];
+	}
+	
+	public static void main(String[] args){
+		IntSet intSet = new IntSet();
+		intSet.addInt(15);
+		
+		System.out.println(intSet.hasInt(15));
 	}
 }
