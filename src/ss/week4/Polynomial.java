@@ -3,14 +3,19 @@ package ss.week4;
 public class Polynomial implements Function{
 	private int parts[];
 	
-	public Polynomial(int parts[]){
+	public Polynomial(int... parts){
 		this.parts = parts;
 	}
 	
 	@Override
 	public int apply(int value){
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		
+		for(int i = 0; i < parts.length; i++){
+			result += parts[i] * Math.pow(value, parts.length - i - 1);
+		}
+		
+		return result;
 	}
 	
 	@Override
@@ -37,7 +42,8 @@ public class Polynomial implements Function{
 	}
 	
 	public static void main(String[] args){
-		Polynomial polynomial = new Polynomial(new int[]{1, 6, 3, 4, 11});
+		Polynomial polynomial = new Polynomial(1, 6, 3);
 		System.out.println(polynomial);
+		System.out.println(polynomial.apply(2));
 	}
 }
