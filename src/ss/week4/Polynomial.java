@@ -19,31 +19,40 @@ public class Polynomial implements Function{
 	}
 	
 	@Override
-	public Function derivative(Function function){
-		// TODO Auto-generated method stub
-		return null;
+	public Function derivative(){
+		int[] newParts = new int[parts.length - 1];
+		
+		for(int i = 0; i < newParts.length; i++){
+			newParts[i] = parts[i] * (newParts.length - i);
+		}
+		
+		if(newParts.length == 0) return new Constant(0);
+		if(newParts.length == 1) return new Constant(newParts[0]);
+		
+		return new Polynomial(newParts);
 	}
 	
 	@Override
 	public String toString(){
 		String result = "f(x) = ";
 		
-		for(int i = parts.length - 1; i >= 0; i--){
-			int factor = parts.length - i - 1;
+		for(int i = 0; i < parts.length; i++){
+			if(i == parts.length - 1) result += parts[i];
+			else if(i == parts.length - 2) result += parts[i] + "x";
+			else result += parts[i] + "x^" + (parts.length - i - 1);
 			
-			if(i == 0) result += parts[factor];
-			else if(i == 1) result += parts[factor] + "x";
-			else result += parts[factor] + "x^" + i;
-			
-			if(i != 0) result += " + ";
+			if(i != parts.length - 1) result += " + ";
 		}
 		
 		return result;
 	}
 	
 	public static void main(String[] args){
-		Polynomial polynomial = new Polynomial(1, 6, 3);
+		Polynomial polynomial = new Polynomial(7, 6, 6, 2);
 		System.out.println(polynomial);
 		System.out.println(polynomial.apply(2));
+		
+		Function derivative = polynomial.derivative();
+		System.out.println(derivative);
 	}
 }
