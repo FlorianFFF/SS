@@ -24,7 +24,7 @@ public class BillTest {
 
 
     public void setUp() {
-        rekening = new Bill(null);
+        rekening = new Bill(System.out);
     }
 
     public void testBegintoestand() {
@@ -40,25 +40,26 @@ public class BillTest {
     public void addItems(){
 		beginTest("Testen van 2 Items die aan rekening toegevoegd worden: ");
 		rekening.newItem(new Bill.Item(){
-
-			public double getBedrag() {
-				return 58329.12;
+			public String toString(){
+				return String.format("heel duur: %1.2f \n", getPrice());	
 			}
 
-			public String toString(){
-				return String.format("heel duur: %1.2f \n", getBedrag());	
+			@Override
+			public double getPrice() {
+				// TODO Auto-generated method stub
+				return 58329.12;
 			}
 		});	
 		assertEquals("rekening.getTotaal()", "58329.12", rekening.getSum());
 		
 		rekening.newItem(new Bill.Item(){
-
-			public double getBedrag() {
-				return 5.53;
+			public String toString(){
+				return String.format("niet duur: %1.2f \n", getPrice());
 			}
 
-			public String toString(){
-				return String.format("niet duur: %1.2f \n", getBedrag());
+			@Override
+			public double getPrice() {
+				return 0;
 			}
 		});	
 		assertEquals("rekening.getTotaal()", "58324.65", rekening.getSum());

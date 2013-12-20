@@ -21,6 +21,13 @@ public class Safe {
 		actief = false;
 	}
 	
+	public Safe(String ww) {
+		password = new Password();
+		open = false;
+		actief = false;
+		password.setWord(Password.INITIAL, ww);
+	}
+	
 	/**
 	**Methode om de kluis te activeren.
 	**@require Password om de kluis te activeren.

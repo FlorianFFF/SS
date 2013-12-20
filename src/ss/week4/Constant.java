@@ -8,8 +8,8 @@ public class Constant implements Function{
 	}
 	
 	@Override
-	public int apply(int value){
-		return value * constant;
+	public double apply(double value){
+		return constant;
 	}
 	
 	@Override

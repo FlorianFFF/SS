@@ -8,7 +8,7 @@ public class Polynomial implements Function{
 	}
 	
 	@Override
-	public int apply(int value){
+	public double apply(double value){
 		int result = 0;
 		
 		for(int i = 0; i < parts.length; i++){

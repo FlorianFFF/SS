@@ -1,7 +1,7 @@
 package ss.week4;
 
 public interface Function{
-	public int apply(int value);
+	public double apply(double value);
 	
 	public Function derivative();
 	
