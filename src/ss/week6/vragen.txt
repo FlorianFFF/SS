@@ -1,0 +1,13 @@
+6.4
+1. new PrintWriter(new File(path))
+2. Schrijf alle gebufferde data naar de output
+3. Zet tweede argument in constructor naar true, zodat hij autoflushed
+
+6.7
+1. Bij het schrijven maakt het voor het verdere loop van het programma niet uit of het wel of niet lukt, 
+maar als de input van een file niet lukt zorgt dat voor problemen in de rest van het programma als er niks mee gebeurt
+2. checkErrors()
+3. new BufferedReader(new InputStreamReader(System.in));
+
+6.12
+Only objects that support the java.io.Serializable or java.io.Externalizable interface can be read from streams. 
