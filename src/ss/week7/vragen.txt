@@ -1,0 +1,8 @@
+7.1
+Not multithreaded, program hangs
+
+7.10
+run is niet synchornsafohjasdi9zed
+
+7.11
+Werkt nog niet goed

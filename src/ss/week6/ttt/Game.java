@@ -59,6 +59,7 @@ public class Game extends Observable{
 		board.reset();
 		
 		setChanged();
+		notifyObservers();
 	}
 	
 	/*@
@@ -76,6 +77,7 @@ public class Game extends Observable{
 		current = current.other();
 		
 		setChanged();
+		notifyObservers();
 	}
 	
 }

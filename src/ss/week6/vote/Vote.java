@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Vote {
     public static void main(String[] args) {
         Result uitslag = new Result();
-        VoteFrame stemFrame = new VoteFrame(uitslag);
+        VoteFrame0 stemFrame = new VoteFrame0(uitslag);
         ResultJFrame uitslagJFrame = new ResultJFrame(uitslag);
         uitslag.addParty("PvdA");
         uitslag.addParty("VVD");
