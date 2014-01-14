@@ -15,6 +15,7 @@ public class BillTest{
 	public int runTest(){
 		setUp();
 		testBegintoestand();
+		addItems();
 		
 		if(errors == 0){
 			System.out.println("    OK");
@@ -31,10 +32,6 @@ public class BillTest{
 		assertEquals("rekening.()", rekening.getSum(), 0.0);
 	}
 	
-	public void testTotaal(){
-		beginTest("Totaalstand");
-		assertEquals("rekening.()", null, null);
-	}
 	
 	public void addItems(){
 		beginTest("Testen van 2 Items die aan rekening toegevoegd worden: ");
