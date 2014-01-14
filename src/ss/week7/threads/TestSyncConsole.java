@@ -9,14 +9,14 @@ public class TestSyncConsole implements Runnable {
     private synchronized void sum() {
         synchronized (this) {
             int int1 =
-                SyncConsole.readInt(String.format("Thread %s: get number 1?\n", Thread
-                        .currentThread().getName()));
+                SyncConsole.readInt(String.format("Thread %s: get number 1?\n",
+                        Thread.currentThread().getName()));
             int int2 =
-                SyncConsole.readInt(String.format("Thread %s: get number 2?\n", Thread
-                        .currentThread().getName()));
+                SyncConsole.readInt(String.format("Thread %s: get number 2?\n",
+                        Thread.currentThread().getName()));
             
-            System.out.printf("Thread %s: %d + %d = %d\n", Thread.currentThread().getName(), int1,
-                    int2, int1 + int2);
+            System.out.printf("Thread %s: %d + %d = %d\n", Thread
+                    .currentThread().getName(), int1, int2, int1 + int2);
         }
     }
     
