@@ -49,11 +49,14 @@ public class TicTacToe {
             // B{BKE-mens}
             // I{BKE-mens} Speler s1 = new MensSpeler(args[0], Mark.XX);
             // I{BKE-mens} Speler s2 = new MensSpeler(args[1], Mark.OO);
-            Game spel = new Game(s1, s2);
-            spel.start();
-        } else {
-            System.out.println("usage: TicTacToe <name1> <nam2>");
+            Game game = new Game(s1, s2);
+            game.start();
+            } else if (args.length == 0) {
+                System.out.println("OVERRIDE MODE ACTIVATED");
+                String[] argumenten = {"s1","s2"};
+                TicTacToe.main(argumenten);         
+            } else {
+                System.out.println("usages: TicTacToe <name1> <nam2>" );
+            }
         }
-    }
-
 }
