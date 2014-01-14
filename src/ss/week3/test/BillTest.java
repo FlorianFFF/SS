@@ -15,6 +15,8 @@ public class BillTest{
 	public int runTest(){
 		setUp();
 		testBegintoestand();
+		addItems();
+		testTotaal();
 		
 		if(errors == 0){
 			System.out.println("    OK");
