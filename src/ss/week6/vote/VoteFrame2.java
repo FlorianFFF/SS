@@ -13,16 +13,16 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * VoteFrame met VoteFrame listeners.
+ * VoteFrame met inner class.
  */
-public class VoteFrame1 extends Frame implements ItemListener, ActionListener {
+public class VoteFrame2 extends Frame {
     private static final String ASK_VOTE_TEXT = "Make your choice";
     private static final String CONFIRM_VOTE_TEXT = "Change selection or press OK";
     private Label label;
     private Choice choice;
     private Button button;
     
-    public VoteFrame1() {
+    public VoteFrame2() {
         setSize(200, 300);
         setLocationRelativeTo(null);
         addWindowListener(new WindowAdapter() {
@@ -51,32 +51,36 @@ public class VoteFrame1 extends Frame implements ItemListener, ActionListener {
         button = new Button("Confirm Vote");
         panel.add(button).setEnabled(false);
         
-        choice.addItemListener(this);
+        choice.addItemListener(new ChoiceListener());
         
         //nog andere manieren van listeners implementeren
-        button.addActionListener(this);
+        button.addActionListener(new ButtonListener());
         
         setVisible(true);
     }
     
-    @Override
-    public void itemStateChanged(ItemEvent event) {
-        boolean hasChosen = choice.getSelectedIndex() != 0;
-        
-        button.setEnabled(hasChosen);
-        label.setText(hasChosen ? CONFIRM_VOTE_TEXT : ASK_VOTE_TEXT);
-        label.revalidate();//because the label size changes
-    }
-    
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
-        choice.select(0);
-        button.setEnabled(false);
-        label.setText(ASK_VOTE_TEXT);
-        label.revalidate();
-    }
-    
     public static void main(String[] args) {
-        new VoteFrame1();
+        new VoteFrame2();
+    }
+    
+    class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent arg0) {
+            choice.select(0);
+            button.setEnabled(false);
+            label.setText(ASK_VOTE_TEXT);
+            label.revalidate();
+        }
+    }
+    
+    class ChoiceListener implements ItemListener {
+        @Override
+        public void itemStateChanged(ItemEvent event) {
+            boolean hasChosen = choice.getSelectedIndex() != 0;
+            
+            button.setEnabled(hasChosen);
+            label.setText(hasChosen ? CONFIRM_VOTE_TEXT : ASK_VOTE_TEXT);
+            label.revalidate();//because the label size changes
+        }
     }
 }
